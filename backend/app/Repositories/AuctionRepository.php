@@ -21,4 +21,8 @@ class AuctionRepository
             'userId' => $data['userId'],
         ]);
     }
+
+    public function getAll() {
+        return $this->repository->all();
+    }
 }

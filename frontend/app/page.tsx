@@ -3,6 +3,7 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
 import Header from "@/app/components/Header";
+import Auctions from "@/app/components/Auctions";
 
 export default function Home() {
     const [token, setToken] = useState("");
@@ -20,7 +21,7 @@ export default function Home() {
             const token = localStorage.getItem('token');
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/user', {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -47,7 +48,10 @@ export default function Home() {
     return (
         <div className="bg-white">
             {token ? (
-                <Header />
+                <>
+                    <Header />
+                    <Auctions />
+                </>
             ) : (
                 <>
                     <header className="absolute inset-x-0 top-0 z-50">

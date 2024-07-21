@@ -22,7 +22,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/register`, formData);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/register`, formData);
             console.log('Registration successful:', response.data);
             router.push('/login')
         } catch (error) {

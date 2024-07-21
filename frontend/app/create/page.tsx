@@ -44,7 +44,7 @@ export default function Create() {
         });
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/create', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/create`, {
                 method: 'POST',
                 body: formDataToSend,
             });

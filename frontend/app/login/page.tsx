@@ -21,7 +21,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, formData);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, formData);
             console.log('Login successful:', response.data);
             localStorage.setItem("token", response.data);
             router.push('/');

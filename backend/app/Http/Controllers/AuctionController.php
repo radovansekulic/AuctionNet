@@ -15,5 +15,8 @@ class AuctionController extends Controller
     public function create(CreateAuctionRequest $request) {
         return $this->auctionRepository->create($request->validated());
     }
+    public function getAll() {
+        return $this->auctionRepository->getAll();
+    }
 
 }

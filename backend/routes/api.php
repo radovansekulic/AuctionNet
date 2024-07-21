@@ -13,3 +13,4 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/create', [AuctionController::class, 'create']);
+Route::get('/getAll', [AuctionController::class, 'getAll']);
