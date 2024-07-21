@@ -1,4 +1,7 @@
-import {useRouter} from "next/navigation";
+"use client"
+
+import {useRouter} from 'next/navigation';
+import Link from "next/link";
 
 export default function Header() {
     const router = useRouter();
@@ -23,15 +26,14 @@ export default function Header() {
                                  alt="Your Company"/>
                         </div>
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            {/* Current: "border-green-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                            <a href="#"
-                               className="inline-flex items-center border-b-2 border-green-500 px-1 pt-1 text-sm font-medium text-gray-900">Dashboard</a>
-                            <a href="#"
-                               className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Team</a>
-                            <a href="#"
-                               className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Projects</a>
-                            <a href="#"
-                               className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Calendar</a>
+                            <Link href={"/"}
+                               className="inline-flex items-center border-b-2 border-green-500 px-1 pt-1 text-sm font-medium text-gray-900">Auctions</Link>
+                            <Link href={"create"}
+                               className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Create Auction</Link>
+                            <Link href={"dashboard"}
+                                  className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">My Auctions</Link>
+                            <Link href={"profile"}
+                               className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Profile</Link>
                         </div>
                     </div>
                     <div className="hidden sm:ml-6 sm:flex sm:items-center">

@@ -6,15 +6,43 @@ import Header from "@/app/components/Header";
 
 export default function Home() {
     const [token, setToken] = useState("");
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
         if (storedToken) {
             setToken(storedToken);
-        } else {
-            setToken(null);
         }
     }, []);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const token = localStorage.getItem('token');
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/user', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                setUserData(data);
+                localStorage.setItem("userData", JSON.stringify(data));
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        };
+
+        fetchUserData();
+    }, [setUserData]);
+
 
     return (
         <div className="bg-white">
