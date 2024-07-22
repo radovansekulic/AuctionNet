@@ -25,4 +25,8 @@ class AuctionRepository
     public function getAll() {
         return $this->repository->all();
     }
+
+    public function dashboard($userId) {
+        return $this->repository->where('userId', $userId)->get();
+    }
 }

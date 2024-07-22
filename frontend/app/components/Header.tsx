@@ -2,9 +2,19 @@
 
 import {useRouter} from 'next/navigation';
 import Link from "next/link";
+import {useEffect, useState} from "react";
 
 export default function Header() {
     const router = useRouter();
+    const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+        const userData = localStorage.getItem("userData");
+        if (userData) {
+            const userDataObj = JSON.parse(userData);
+            setUserId(userDataObj.id);
+        }
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -28,11 +38,11 @@ export default function Header() {
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                             <Link href={"/"}
                                className="inline-flex items-center border-b-2 border-green-500 px-1 pt-1 text-sm font-medium text-gray-900">Auctions</Link>
-                            <Link href={"create"}
+                            <Link href={`/create/${userId}`}
                                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Create Auction</Link>
-                            <Link href={"dashboard"}
+                            <Link href={`/dashboard/${userId}`}
                                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">My Auctions</Link>
-                            <Link href={"profile"}
+                            <Link href={`/profile/${userId}`}
                                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Profile</Link>
                         </div>
                     </div>

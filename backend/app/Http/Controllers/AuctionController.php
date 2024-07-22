@@ -18,5 +18,8 @@ class AuctionController extends Controller
     public function getAll() {
         return $this->auctionRepository->getAll();
     }
+    public function dashboard($id) {
+        return $this->auctionRepository->dashboard($id);
+    }
 
 }

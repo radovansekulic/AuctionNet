@@ -14,3 +14,4 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/create', [AuctionController::class, 'create']);
 Route::get('/getAll', [AuctionController::class, 'getAll']);
+Route::get('/dashboard/{id}', [AuctionController::class, 'dashboard']);

@@ -1,10 +1,10 @@
 "use client"
 
 import Header from "@/app/components/Header";
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import {useRouter} from 'next/navigation';
 
-export default function Create() {
+export default function Create({ params }: { params: { id: number } }) {
     const router = useRouter();
 
     const [formData, setFormData] = useState({
@@ -12,18 +12,8 @@ export default function Create() {
         description: '',
         startingPrice: '',
         image: null as File | null,
-        userId: ''
+        userId: params.id,
     });
-
-    useEffect(() => {
-        const userData = localStorage.getItem('userData');
-        if (userData) {
-            setFormData(prev => ({
-                ...prev,
-                userId: JSON.parse(userData).id
-            }));
-        }
-    }, []);
 
     const handleChange = (e: any) => {
         const { name, value, files } = e.target;
