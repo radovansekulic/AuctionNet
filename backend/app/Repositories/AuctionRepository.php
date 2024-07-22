@@ -23,10 +23,14 @@ class AuctionRepository
     }
 
     public function getAll() {
-        return $this->repository->all();
+        return $this->repository->orderByDesc('id')->get();
     }
 
     public function dashboard($userId) {
         return $this->repository->where('userId', $userId)->get();
+    }
+
+    public function item($id) {
+        return $this->repository->where('id', $id)->get();
     }
 }

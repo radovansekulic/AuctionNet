@@ -2,9 +2,9 @@
 
 import axios from "axios";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
-export default function Auctions() {
+export default function Auctions(props: any) {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
@@ -26,7 +26,7 @@ export default function Auctions() {
         <div className="container mx-auto md:w-[40%] mt-20 px-4">
             {data.map((item) => (
                 <div key={item["id"]} className="border shadow-sm rounded-2xl p-4 mb-4">
-                    <Link href={`/items/${item["id"]}`}>
+                    <Link href={`/item/${item["id"]}`}>
                         <h1 className="text-xl mb-2">{item["title"]}</h1>
                         <div className="flex items-baseline">
                             <p className="text-xl mb-5 me-2">🤝 {item["startingPrice"]}$</p>
